@@ -1,0 +1,9 @@
+@model Transaction
+
+<form asp-action="Account" method="post">
+  <span asp-validation-for="Amount" style="color: red;"></span>
+  <label asp-for="Amount"></label>
+  <input asp-for="Amount">
+
+  <button class="waves-effect waves-light btn" style="float:right;">Deposit/Withdrawal</button>
+</form>

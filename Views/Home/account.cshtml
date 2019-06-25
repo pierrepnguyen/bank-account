@@ -1,0 +1,27 @@
+@model Both
+<div class="row">
+  <h2>Welcome, @Model.user.fName</h2>
+  <p style="float:right;">Current Balance: $@Model.user.Transactions.Sum(t => t.Amount)</p>
+  <a href="/logout" style="float:right;">Logout</a>
+</div>
+<div class="row">
+  <partial name="trans" model="@Model.transactions">
+    <br><br>
+  <table>
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach(var t in Model.user.Transactions.OrderByDescending(d => d.CreatedAt))
+      {
+      <tr>
+        <td>$@t.Amount</td>
+        <td>@t.CreatedAt</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
